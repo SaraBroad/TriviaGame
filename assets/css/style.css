@@ -1,0 +1,28 @@
+body {
+    background-image: url(../images/JacksonPollock.png);
+    
+}
+
+h1 {
+    font-family: 'Chewy', cursive;
+    font-size: 50px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+#container-box {
+    background-color: #FFD700;
+    height: 500px;
+    width: 800px;
+    margin-left: 175px;
+}
+
+#start-button {
+    margin-left: 250px;
+    margin-top: 150px;
+    padding: 5px;
+    width: 300px;
+    font-size: 30px;
+    border: 2px solid #4B0082;
+    background-color: #B0C4DE;
+}
