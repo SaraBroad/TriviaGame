@@ -26,3 +26,17 @@ h1 {
     border: 2px solid #4B0082;
     background-color: #B0C4DE;
 }
+
+#timer {
+    text-align: center;
+    font-size: 28px;
+}
+
+#question {
+    text-align: center; 
+    font-size: 26px;
+}
+
+#button {
+    
+}

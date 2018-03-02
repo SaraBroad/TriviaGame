@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -8,44 +9,128 @@
     <link href="https://fonts.googleapis.com/css?family=Chewy" rel="stylesheet">
     <title>Art History Trivia Game</title>
 </head>
+
 <body>
 
 
-<div id="container-box"> 
-<h1>Art History Trivia!</h1>
-<button id="start-button">Start</button>
-</div>  
+    <div id="container-box">
+        <h1>Art History Trivia!</h1>
+        <button id="start-button">Start</button>
+        <div id="timer"></div></br>
+        <div id="question-box">
+            <div id="question"></div>
+            <div id="answer-choices"></div>
+        </div>
+        <div id="answer-screen">
+            <p id="result"></p>
+            <p id="answer-reveal"></p>
+            <div id="gif"></div>
+        </div>
+    </div>
+
+    <script>
+        // start screen with title and button that says start
+        // Press start to start the game
+        // When you press start, first question is shown 
+        // display time remaining
+        // display question and answer choices. answer choices blend with background until one is click and button changes format
+        // when click answer time remaining displays but countdown is stopped
+        // if timer hits zero and no answer displayed, pass to next screen that says out of time
+        // if answer is correct say "nope" and correct answer was: and show gif
+        // if answer is correct say correct
+        // set timer for how long answer screen is on for
 
 
-<!-- In what Italian city is the Sistine Chapel located? Venice Naples Rome Florence  -->
-<!-- Which mid-20th century artist is famous for his splatter paintings? Jackson Pollock Mark Rothko Claude Monet Edgar Degas -->
-<!-- Which painter is famous for painting "The Starry Night" in 1889?  Rembrandt Peter Paul Rubens Vincent Van Gogh Paul Cezanne -->
-<!-- Which of the following artists is NOT a Renaissance painter? Titian Picasso Michaelangelo Caravaggio  -->
-<!-- At what museum can you see the Mona Lisa? The Met, The Louvre, The British Museum, The Rijksmuseum -->
+        $(document).ready(function () {
 
-<script>
-// start screen with title and button that says start
-// Press start to start the game
-// When you press start, first question is shown 
-// display time remaining
-// display question and answer choices. answer choices blend with background until one is click and button changes format
-// when click answer time remaining displays but countdown is stopped
-// if timer hits zero and no answer displayed, pass to next screen that says out of time
-// if answer is correct say "nope" and correct answer was: and show gif
-// if answer is correct say correct
-// set timer for how long answer screen is on for
+            var userSelection;
+            var timeRemaining;
+            var intervalId;
+            var questionTimerNum = 30;
+            var answerTimerNum;
 
 
-$(document).ready(function() {
+                var questionData = {
+                question1: {
+                    question: "In what Italian city is the Sistine Chapel located?",
+                    possibleAnswers: ["Venice", "Naples", "Rome", "Florence"],
+                    answer: "Rome",
+            },
+                question2: {
+                    question: "Which mid-20th century artist is famous for his splatter paintings?",
+                    possibleAnswers: ["Jackson Pollock", "Mark Rothko", "Claude Monet", "Edgar Degas"],
+                    answer: "Jackson Pollock",
+
+            },
+                question3: {
+                    question: "Which painter is famous for painting 'The Starry Night' in 1889?",
+                    possibleAnswers: ["Rembrandt", "Peter Paul Rubens", "Vincent Van Gogh", "Paul Cezanne"],
+                    answer: "Vincent Van Gogh",
+                },
+
+                question4: {
+                    question: "Which of the following artists is NOT a Renaissance painter?",
+                    possibleAnswers: ["Titian", "Picasso", "Michaelangelo", "Caravaggio"],
+                    answer: "Picasso",
+                },
+
+                question5: {
+                    question: "At what museum can you view the Mona Lisa?",
+                    possibleAnswers: ["The Met", "The Louvre", "The British Museum", "The Rijksmuseum"],
+                    answer: "The Louvre",
+                },
+            };
+
+       
+
+            $("#start-button").click(function () {
+                // when user clicks start, first question appears and timer starts
+               $(this).hide();
+               askQuestionOne();
+            })
+
+            function askQuestionOne() {
+                questionCountdown();
+                // timer shows throughout
+                intervalId = setInterval(questionCountdown, 1000);
+                $("#question").html(questionData.question1.question);
+                // question displays in question div
+                // answer displays in answer div
+                for (var i = 0; i < questionData.question1.possibleAnswers.length; i++) {
+                    var imageCrystal = $("button/>");
+                }
+            };
+
+            
+
+            // function for the amount of time user has to answer question
+            function questionCountdown () {
+                questionTimerNum--; 
+                $("#timer").html("Time Remaining: " + questionTimerNum + " seconds");
+                if (questionTimerNum === 0) {
+                    stop();
+                }
+                else if (userSelection) {
+                    stop();
+                }
+            }
+
+             function stop() {
+                clearInterval(intervalId);
+            }
+
+            // function buttonMaker() {
+            //     for (var i = 0; i< )
+
+            // } 
+
+        });
 
 
 
-});
+    </script>
 
 
-
-</script>
-
-    
 </body>
+
 </html>
