@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
     <link href="https://fonts.googleapis.com/css?family=Chewy" rel="stylesheet">
     <title>Art History Trivia Game</title>
 </head>
@@ -23,7 +23,7 @@
         </div>
         <div id="answer-screen">
             <p id="result"></p>
-            <p id="answer-reveal"></p>
+            <p class="answer-reveal"></p>
             <div id="gif"></div>
         </div>
     </div>
@@ -96,10 +96,21 @@
                 $("#question").html(questionData.question1.question);
                 // question displays in question div
                 // answer displays in answer div
-                for (var i = 0; i < questionData.question1.possibleAnswers.length; i++) {
-                    var imageCrystal = $("button/>");
-                }
-            };
+
+            //        $("answer-choices").on("click", function() {
+            //         for (var i = 0; i < questionData.question1.possibleAnswers.length; i++) {
+            //         ("#answer-choices").text(questionData.question1.possibleAnswers[i]);
+            //         };
+        };
+
+            //     // for (var i = 0; i < questionData.question1.possibleAnswers.length; i++) {
+            //     //     var choices  = $("<button/>");
+            //     //     choices.addClass("#button");
+            //     //     choices.attr("choice-value", questionData.question1.possibleAnswers[i]);
+            //     //     $("#answer-choices").append(choices);
+
+        // }
+            // 
 
             
 
