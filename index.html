@@ -51,7 +51,8 @@
             var correctAnswers = 0;
             var incorrectAnswers = 0;
             var unAnswered = 0;
-
+            var answerArray = [];
+           
 
                 var questionData = {
                 question1: {
@@ -93,41 +94,20 @@
             })
 
             function askQuestionOne() {
-                buttonMakerOne();
-                questionCountdown();
-                // timer shows throughout
-                intervalId = setInterval(questionCountdown, 1000);
-                $("#question").html(questionData.question1.question);
-                if (userSelection === "Rome") {
-                    alert("winner");
-                }
-                };
-
-
-
-
-                    function buttonMakerOne() {
                 for (var i = 0; i < questionData.question1.possibleAnswers.length; i++) {
                     var choices = $("<button>");
                     choices.addClass("button");
-                    choices.attr("choice-value", questionData.question1.possibleAnswers[i]);
+                    choices.attr(questionData.question1.possibleAnswers[i]);
                     choices.text(questionData.question1.possibleAnswers[i]);
                     $("#answer-choices").append(choices);
-                    $("#answer-choices").on("click", function() {
-                        var userGuess = " "
-                        if (userGuess === questionData.question1.possibleAnswers[2]) {
-                            alert("winner");
-                        }
-                    });
-                        
-                    // button.onclick = function() {
-                    //     if(userSelection === "Rome") {
-                    //     alert("winner");
-                    // }
-                    // }
+                questionCountdown();
+                // timer shows throughout
+                intervalId = setInterval(questionCountdown, 1000);
+                };
+            };
 
-                }
-            }
+
+
 
 
             function questionCountdown () {
