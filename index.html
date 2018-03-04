@@ -43,11 +43,14 @@
 
         $(document).ready(function () {
 
-            var userSelection;
+            var userSelection = " ";
             var timeRemaining;
             var intervalId;
             var questionTimerNum = 30;
             var answerTimerNum;
+            var correctAnswers = 0;
+            var incorrectAnswers = 0;
+            var unAnswered = 0;
 
 
                 var questionData = {
@@ -90,31 +93,43 @@
             })
 
             function askQuestionOne() {
+                buttonMakerOne();
                 questionCountdown();
                 // timer shows throughout
                 intervalId = setInterval(questionCountdown, 1000);
                 $("#question").html(questionData.question1.question);
-                // question displays in question div
-                // answer displays in answer div
+                if (userSelection === "Rome") {
+                    alert("winner");
+                }
+                };
 
-            //        $("answer-choices").on("click", function() {
-            //         for (var i = 0; i < questionData.question1.possibleAnswers.length; i++) {
-            //         ("#answer-choices").text(questionData.question1.possibleAnswers[i]);
-            //         };
-        };
 
-            //     // for (var i = 0; i < questionData.question1.possibleAnswers.length; i++) {
-            //     //     var choices  = $("<button/>");
-            //     //     choices.addClass("#button");
-            //     //     choices.attr("choice-value", questionData.question1.possibleAnswers[i]);
-            //     //     $("#answer-choices").append(choices);
 
-        // }
-            // 
 
-            
+                    function buttonMakerOne() {
+                for (var i = 0; i < questionData.question1.possibleAnswers.length; i++) {
+                    var choices = $("<button>");
+                    choices.addClass("button");
+                    choices.attr("choice-value", questionData.question1.possibleAnswers[i]);
+                    choices.text(questionData.question1.possibleAnswers[i]);
+                    $("#answer-choices").append(choices);
+                    $("#answer-choices").on("click", function() {
+                        var userGuess = " "
+                        if (userGuess === questionData.question1.possibleAnswers[2]) {
+                            alert("winner");
+                        }
+                    });
+                        
+                    // button.onclick = function() {
+                    //     if(userSelection === "Rome") {
+                    //     alert("winner");
+                    // }
+                    // }
 
-            // function for the amount of time user has to answer question
+                }
+            }
+
+
             function questionCountdown () {
                 questionTimerNum--; 
                 $("#timer").html("Time Remaining: " + questionTimerNum + " seconds");
