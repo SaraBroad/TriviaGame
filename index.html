@@ -23,8 +23,8 @@
         </div>
         <div id="answer-screen">
             <p id="result"></p>
-            <p class="answer-reveal"></p>
-            <div id="gif"></div>
+            <!-- <p class="answer-reveal"></p>
+            <div id="gif"></div> -->
         </div>
     </div>
 
@@ -40,307 +40,145 @@
         // set timer for how long answer screen is on for
         // end of game - display results
 
+       
+        $(document).ready(function() {
 
-$(document).ready(function() {
-
+       var questionData = [{
         
-            var timeRemaining;
-            var intervalId;
-            var questionTimerNum = 31;
-            var answerTimerNum;
-            var correctAnswers = 0;
-            var incorrectAnswers = 0;
-            var unAnswered = 0;
-            var currentQuestion = 0
-
-
-            var questionData = [{
-                question: "In what Italian city is the Sistine Chapel located?",
-                possibleAnswers: ["Venice", "Naples", "Rome", "Florence"],
-                answer: "Rome",
-            },
-            {
-                question: "Which mid-20th century artist is famous for his splatter paintings?",
-                possibleAnswers: ["Jackson Pollock", "Mark Rothko", "Claude Monet", "Edgar Degas"],
-                answer: "Jackson Pollock",
-
-            },
-            {
-                question: "Which painter is famous for painting 'The Starry Night' in 1889?",
-                possibleAnswers: ["Rembrandt", "Peter Paul Rubens", "Vincent Van Gogh", "Paul Cezanne"],
-                answer: "Vincent Van Gogh",
+                    question: "In what Italian city is the Sistine Chapel located?",
+                    possibleAnswers: ["Venice", "Naples", "Rome", "Florence"],
+                    answer: "Rome",
             },
 
             {
-                question: "Which of the following artists is NOT a Renaissance painter?",
-                possibleAnswers: ["Titian", "Picasso", "Michaelangelo", "Caravaggio"],
-                answer: "Picasso",
+                    question: "Which mid-20th century artist is famous for his splatter paintings?",
+                    possibleAnswers: ["Jackson Pollock", "Mark Rothko", "Claude Monet", "Edgar Degas"],
+                    answer: "Jackson Pollock",
             },
 
             {
-                question: "At what museum can you view the Mona Lisa?",
-                possibleAnswers: ["The Met", "The Louvre", "The British Museum", "The Rijksmuseum"],
-                answer: "The Louvre",
-            }];
+                    question: "Which painter is famous for painting 'The Starry Night' in 1889?",
+                    possibleAnswers: ["Rembrandt", "Peter Paul Rubens", "Vincent Van Gogh", "Paul Cezanne"],
+                    answer: "Vincent Van Gogh",
 
-            $("#start-button").click(function () {
-+                // when user clicks start, first question appears and timer starts
-+               $("#start-button").remove();
+            }, 
+            {
+                    question: "Which of the following artists is NOT a Renaissance painter?",
+                    possibleAnswers: ["Titian", "Picasso", "Michaelangelo", "Caravaggio"],
+                    answer: "Picasso",
+            },
+ 
+            {
+                    question: "At what museum can you view the Mona Lisa?",
+                    possibleAnswers: ["The Met", "The Louvre", "The British Museum", "The Rijksmuseum"],
+                    answer: "The Louvre",
+            },
+
+            {
+                    question: "Which of the following is NOT a period of ancient Greek art?",
+                    possibleAnswers: ["Roman", "Archaic", "Classical", "Hellinistic"],
+                    answer: "Roman",
+            },
+
+            {
+                    question: "The Chinese used this material to make their art shiny and to protect it from elements.",
+                    possibleAnswers: ["Cement", "Lacquer", "Oil", "Clay"],
+                    answer: "Lacquer",
+            },
+
+            {
+                    question: "Paul Gaugin created a series of paintings while visiting this island nation.",
+                    possibleAnswers: ["Fiji", "Jamaica", "Tahiti", "Papua New Guinea"],
+                    answer: "Tahiti",
+
+            },
+
+            {
+                    question: "'Las Meninas' is a painting by which Spanish artist?",
+                    possibleAnswers: ["Diego Velazquez", "El Grego", "Francisco Goya", "Joan Miro"],
+                    answer: "Diego Velazquez",
+
+            },
+
+            {
+                    question: "Which is NOT an example of a Greek column",
+                    possibleAnswers: ["Doric", "Hellinistic", "Corinthian", "Ionic"],
+                    answer: "Hellinistic",
+
+                }];
 
 
-+               
-+            
+       var questionTimerNum = 60;
+       var correct = 0;
+       var incorrect = 0;
+       var unanswered = 0;
+       var currentQuestion = 0;
+       var questions = " ";
+       var userSelection;
+       var intervalId;
+        
+        //start button
+        $("#start-button").click(function () {
+               $(this).remove();            
+         });
+
+        // display questions
+         function displayQuestion() {
+            intervalId = setInterval(questionCountdown, 1000);
+        
+
+         }
+
+        //countdown
+        function questionCountdown() {
+            questionTimerNum--;
+            $("#timer").html("Time Remaining: " + questionTimerNum + " seconds");
+            if (questionTimerNum === 0) {
+                incorrect++;
+            }
+        }
+
+        // end of game
+
+        function endGame() {
+            clearInterval(intervalId);
+            $("#result").html("<h2>All Done!</h2>");
+            var tally = $("<div>") 
+            tally.html("Correct Answers: " + correct + "</br>" + "Incorrect Answers: " + incorrect + "</br>" + "Unanswered: " + unanswered);
+            tally.addClass("results");
+            $("#result").append(tally);
+        }
+
+
+
+
+        // function questionOne() {
+        //     questionCountdown();
+        //     var intervalId = setInterval(questionCountdown, 1000);
+        // }
+     
+            //  function stop() {
+            //     clearInterval(intervalId);
+            // }
+
+   
+
+         // load first question
+         // create buttons
+         // load following question
+         // userClick
+         // screen for answering correctly
+         // screen for answering incorrectly
+         // results screen
+        
+         // stop timer
+
+
+
+
 
 
 });
-
-
-//       
-// //             var timeRemaining;
-// //             var intervalId;
-// //             var questionTimerNum = 31;
-// //             var answerTimerNum;
-// //             var correctAnswers = 0;
-// //             var incorrectAnswers = 0;
-// //             var unAnswered = 0;
-// //             var currentQuestion = 0
-
-
-// //             var questionData = [{
-// //                 question: "In what Italian city is the Sistine Chapel located?",
-// //                 possibleAnswers: ["Venice", "Naples", "Rome", "Florence"],
-// //                 answer: "Rome",
-// //             },
-// //             {
-// //                 question: "Which mid-20th century artist is famous for his splatter paintings?",
-// //                 possibleAnswers: ["Jackson Pollock", "Mark Rothko", "Claude Monet", "Edgar Degas"],
-// //                 answer: "Jackson Pollock",
-
-// //             },
-// //             {
-// //                 question: "Which painter is famous for painting 'The Starry Night' in 1889?",
-// //                 possibleAnswers: ["Rembrandt", "Peter Paul Rubens", "Vincent Van Gogh", "Paul Cezanne"],
-// //                 answer: "Vincent Van Gogh",
-// //             },
-
-// //             {
-// //                 question: "Which of the following artists is NOT a Renaissance painter?",
-// //                 possibleAnswers: ["Titian", "Picasso", "Michaelangelo", "Caravaggio"],
-// //                 answer: "Picasso",
-// //             },
-
-// //             {
-// //                 question: "At what museum can you view the Mona Lisa?",
-// //                 possibleAnswers: ["The Met", "The Louvre", "The British Museum", "The Rijksmuseum"],
-// //                 answer: "The Louvre",
-// //             }];
-// +       
- 
-// +            $("#start-button").click(function () {
-// +                // when user clicks start, first question appears and timer starts
-// +               $(this).hide();
-// +               askQuestionOne();
-// +            })
- 
-// +            function askQuestionOne() {
-// +                questionCountdown();
-// +                // timer shows throughout
-// +                intervalId = setInterval(questionCountdown, 1000);
-// +                $("#question").html(questionData.question1.question);
-// +                // question displays in question div
-// +                // answer displays in answer div
-// +                for (var i = 0; i < questionData.question1.possibleAnswers.length; i++) {
-// +                    var imageCrystal = $("button/>");
-// +                }
-// +            };
- 
-// -});
-// +            
- 
-// +            // function for the amount of time user has to answer question
-// +            function questionCountdown () {
-// +                questionTimerNum--; 
-// +                $("#timer").html("Time Remaining: " + questionTimerNum + " seconds");
-// +                if (questionTimerNum === 0) {
-// +                    stop();
-// +                }
-// +                else if (userSelection) {
-// +                    stop();
-// +                }
-// +            }
- 
-// +             function stop() {
-// +                clearInterval(intervalId);
-// +            }
-// +
-// +            // function buttonMaker() {
-// +            //     for (var i = 0; i< )
-// +
-// +            // } 
-// +
-// +        });
-
-// // <!-- 
-// //         $(document).ready(function () {
-
-// //             var userSelection;
-// //             var timeRemaining;
-// //             var intervalId;
-// //             var questionTimerNum = 31;
-// //             var answerTimerNum;
-// //             var correctAnswers = 0;
-// //             var incorrectAnswers = 0;
-// //             var unAnswered = 0;
-// //             var currentQuestion = 0
-
-
-// //             var questionData = [{
-// //                 question: "In what Italian city is the Sistine Chapel located?",
-// //                 possibleAnswers: ["Venice", "Naples", "Rome", "Florence"],
-// //                 answer: "Rome",
-// //             },
-// //             {
-// //                 question: "Which mid-20th century artist is famous for his splatter paintings?",
-// //                 possibleAnswers: ["Jackson Pollock", "Mark Rothko", "Claude Monet", "Edgar Degas"],
-// //                 answer: "Jackson Pollock",
-
-// //             },
-// //             {
-// //                 question: "Which painter is famous for painting 'The Starry Night' in 1889?",
-// //                 possibleAnswers: ["Rembrandt", "Peter Paul Rubens", "Vincent Van Gogh", "Paul Cezanne"],
-// //                 answer: "Vincent Van Gogh",
-// //             },
-
-// //             {
-// //                 question: "Which of the following artists is NOT a Renaissance painter?",
-// //                 possibleAnswers: ["Titian", "Picasso", "Michaelangelo", "Caravaggio"],
-// //                 answer: "Picasso",
-// //             },
-
-// //             {
-// //                 question: "At what museum can you view the Mona Lisa?",
-// //                 possibleAnswers: ["The Met", "The Louvre", "The British Museum", "The Rijksmuseum"],
-// //                 answer: "The Louvre",
-// //             }];
-
-       
-
-// //             $("#start-button").click(function () {
-// //                 // when user clicks start, first question appears and timer starts
-// //                $("#start-button").remove();
-// //             })
-
-// //             // load current question
-
-
-// //             // question countdown
-
-
-// //  function askQuestionOne() {
-// // +                questionCountdown();
-// // +                // timer shows throughout
-// // +                intervalId = setInterval(questionCountdown, 1000);
-// // +                $("#question").html(questionData.question1.question);
-// // +                // question displays in question div
-// // +                // answer displays in answer div
-// // +                for (var i = 0; i < questionData.question1.possibleAnswers.length; i++) {
-// // +                    var imageCrystal = $("button/>");
-// // +                }
-// // +            };
- 
-// // -         
-// // +            
- 
-// // +            // function for the amount of time user has to answer question
-// // +            function questionCountdown () {
-// // +                questionTimerNum--; 
-// // +                $("#timer").html("Time Remaining: " + questionTimerNum + " seconds");
-// // +                if (questionTimerNum === 0) {
-// // +                    stop();
-// // +                }
-// // +                else if (userSelection) {
-// // +                    stop();
-// // +                }
-// // +            }
- 
-// // +             function stop() {
-// // +                clearInterval(intervalId);
-// // +            }
-
-// // //             function questionCountdown() {
-// // //                 var questionTimerNum = 31;
-// // //                 questionTimerNum--;
-// // //                 $("#timer").html("Time Remaining: " + questionTimerNum + " seconds");
-
-// // //             }
-
-// // // questionCountdown();
-// //             // create buttons
-
-
-//             // check answer
-
-
-
-//             // go to correct answer screen
-
-
-//             // go to incorrect answer screen
-
-
-//             // display results
-            
-
-
-
-
-//             // function askQuestionOne() {
-//             //     buttonMakerOne();
-//             //     questionCountdown();
-//             //     // timer shows throughout
-//             //     intervalId = setInterval(questionCountdown, 1000);
-//             //     $("#question").html(questionData.question1.question);
-//             //     // question displays in question div
-//             //     // answer displays in answer div
-//             //     };
-//             //         function buttonMakerOne () {
-//             //         for (var i = 0; i < questionData.question1.possibleAnswers.length; i++) {
-//             //         var choices  = $("<button>");
-//             //         choices.addClass("button");
-//             //         choices.attr("choice-value", questionData.question1.possibleAnswers[i]);
-//             //         choices.text(questionData.question1.possibleAnswers[i]);
-//             //         $("#answer-choices").append(choices);
-
-//             //     }
-//             //         }
-
-
-
-
-
-// //           function questionCountdown () {
-// // +                questionTimerNum--; 
-// // +                $("#timer").html("Time Remaining: " + questionTimerNum + " seconds");
-// // +                if (questionTimerNum = 0) {
-// // +                    clearInterval(intervalId);
-// // +                }
-// // +                else if (userSelection) {
-// // +                   clearInterval(intervalId);
-// // +                }
-// // +            }
-
-//             //  function stop() {
-//             //     clearInterval(intervalId);
-//             // }
-
-//             // function buttonMaker() {
-//             //     for (var i = 0; i< )
-
-//             // } 
-
-//         // }); -->
-
-
 
     </script>
 
