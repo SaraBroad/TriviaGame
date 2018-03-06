@@ -19,6 +19,7 @@
         <div id="timer"></div></br>
         <div id="question-box">
             <div id="question"></div>
+            <!-- <input type="radio" id="answerButton"> -->
             <div id="answer-choices"></div>
         </div>
         <div id="answer-screen">
@@ -101,14 +102,28 @@
             },
 
             {
-                    question: "Which is NOT an example of a Greek column",
+                    question: "Which is NOT an example of a Greek column style?",
                     possibleAnswers: ["Doric", "Hellinistic", "Corinthian", "Ionic"],
                     answer: "Hellinistic",
 
                 }];
 
 
-       var questionTimerNum = 60;
+                // function questions() {
+                // for (var i = 0; i<questionData.length; i++) {
+                // console.log(questionData[i].question);}
+                // }
+
+                // function answers() {
+                //     for (var i=0; i<questionData.length; i++) {
+                //         console.log(questionData[i].possibleAnswers); 
+                //     }
+                // }
+
+                // questions();
+                // answers();
+
+       var questionTimerNum = 90;
        var correct = 0;
        var incorrect = 0;
        var unanswered = 0;
@@ -119,15 +134,19 @@
         
         //start button
         $("#start-button").click(function () {
-               $(this).remove();            
+               $(this).remove();    
+               displayQuestion(); 
+               questionAndAnswers(); 
+       
          });
 
         // display questions
          function displayQuestion() {
+             questionCountdown();
             intervalId = setInterval(questionCountdown, 1000);
-        
-
          }
+
+    
 
         //countdown
         function questionCountdown() {
@@ -135,10 +154,29 @@
             $("#timer").html("Time Remaining: " + questionTimerNum + " seconds");
             if (questionTimerNum === 0) {
                 incorrect++;
+                endGame();
             }
         }
 
         // end of game
+ 
+        function questionAndAnswers() {
+            for (var i=0; i<questionData.length; i++) {
+            var questionElements = $("<div>");
+            questionElements.addClass("question-box")
+            questionElements.html("<p>" + questionData[i].question + "</p>");
+            $("#question-box").append(questionElements);
+            var questionPossibleAnswers = $("<div>");
+            questionPossibleAnswers.addClass("question-box");
+            questionPossibleAnswers.attr("value");
+            questionPossibleAnswers.html("<p>" + questionData[i].possibleAnswers + "</p>");
+            $("#question-box").append(questionPossibleAnswers);
+
+            }
+        }
+
+
+//possible answers with radio button
 
         function endGame() {
             clearInterval(intervalId);
@@ -149,19 +187,12 @@
             $("#result").append(tally);
         }
 
+        function buttonMaker() {
+            var answerButton = $("input: radio");
 
-
-
-        // function questionOne() {
-        //     questionCountdown();
-        //     var intervalId = setInterval(questionCountdown, 1000);
-        // }
-     
-            //  function stop() {
-            //     clearInterval(intervalId);
-            // }
-
+        }
    
+   buttonMaker();
 
          // load first question
          // create buttons
