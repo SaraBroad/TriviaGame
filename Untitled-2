@@ -1,0 +1,65 @@
+ $(document).ready(function() {
+
+       var questionData = [{
+        
+                    question: "In what Italian city is the Sistine Chapel located?",
+                    possibleAnswers: ["Venice", "Naples", "Rome", "Florence"],
+                    answer: "Rome",
+            },
+
+            {
+                    question: "Which mid-20th century artist is famous for his splatter paintings?",
+                    possibleAnswers: ["Jackson Pollock", "Mark Rothko", "Claude Monet", "Edgar Degas"],
+                    answer: "Jackson Pollock",
+            },
+
+            {
+                    question: "Which painter is famous for painting 'The Starry Night' in 1889?",
+                    possibleAnswers: ["Rembrandt", "Peter Paul Rubens", "Vincent Van Gogh", "Paul Cezanne"],
+                    answer: "Vincent Van Gogh",
+
+            }, 
+            {
+                    question: "Which of the following artists is NOT a Renaissance painter?",
+                    possibleAnswers: ["Titian", "Picasso", "Michaelangelo", "Caravaggio"],
+                    answer: "Picasso",
+            },
+ 
+            {
+                    question: "At what museum can you view the Mona Lisa?",
+                    possibleAnswers: ["The Met", "The Louvre", "The British Museum", "The Rijksmuseum"],
+                    answer: "The Louvre",
+            },
+
+            {
+                    question: "Which of the following is NOT a period of ancient Greek art?",
+                    possibleAnswers: ["Roman", "Archaic", "Classical", "Hellinistic"],
+                    answer: "Roman",
+            },
+
+            {
+                    question: "The Chinese used this material to make their art shiny and to protect it from elements.",
+                    possibleAnswers: ["Cement", "Lacquer", "Oil", "Clay"],
+                    answer: "Lacquer",
+            },
+
+            {
+                    question: "Paul Gaugin created a series of paintings while visiting this island nation.",
+                    possibleAnswers: ["Fiji", "Jamaica", "Tahiti", "Papua New Guinea"],
+                    answer: "Tahiti",
+
+            },
+
+            {
+                    question: "'Las Meninas' is a painting by which Spanish artist?",
+                    possibleAnswers: ["Diego Velazquez", "El Grego", "Francisco Goya", "Joan Miro"],
+                    answer: "Diego Velazquez",
+
+            },
+
+            {
+                    question: "Which is NOT an example of a Greek column style?",
+                    possibleAnswers: ["Doric", "Hellinistic", "Corinthian", "Ionic"],
+                    answer: "Hellinistic",
+
+                }];

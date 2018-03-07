@@ -19,7 +19,6 @@
         <div id="timer"></div></br>
         <div id="question-box">
             <div id="question"></div>
-            <!-- <input type="radio" id="answerButton"> -->
             <div id="answer-choices"></div>
         </div>
         <div id="answer-screen">
@@ -108,22 +107,10 @@
 
                 }];
 
-
-                // function questions() {
-                // for (var i = 0; i<questionData.length; i++) {
-                // console.log(questionData[i].question);}
-                // }
-
-                // function answers() {
-                //     for (var i=0; i<questionData.length; i++) {
-                //         console.log(questionData[i].possibleAnswers); 
-                //     }
-                // }
-
-                // questions();
-                // answers();
-
-       var questionTimerNum = 90;
+    
+        
+        //start button
+    var questionTimerNum = 5;
        var correct = 0;
        var incorrect = 0;
        var unanswered = 0;
@@ -139,15 +126,12 @@
                questionAndAnswers(); 
        
          });
-
         // display questions
          function displayQuestion() {
              questionCountdown();
             intervalId = setInterval(questionCountdown, 1000);
          }
-
     
-
         //countdown
         function questionCountdown() {
             questionTimerNum--;
@@ -157,7 +141,6 @@
                 endGame();
             }
         }
-
         // end of game
  
         function questionAndAnswers() {
@@ -166,34 +149,145 @@
             questionElements.addClass("question-box")
             questionElements.html("<p>" + questionData[i].question + "</p>");
             $("#question-box").append(questionElements);
-            var questionPossibleAnswers = $("<div>");
-            questionPossibleAnswers.addClass("question-box");
-            questionPossibleAnswers.attr("value");
-            questionPossibleAnswers.html("<p>" + questionData[i].possibleAnswers + "</p>");
-            $("#question-box").append(questionPossibleAnswers);
 
+  
+            for (var j = 0; j < questionData[i].possibleAnswers.length; j++) {
+            var questionPossibleAnswers = $('<input type="radio" name="answer-choice' + i + '" value="' + questionData[i].possibleAnswers[j] + '">' + questionData[i].possibleAnswers[j] + '</input>');
+            $("#question-box").append(questionPossibleAnswers);
+        
+
+
+            }
             }
         }
 
+        function score() {
+
+        // if user selection is correct, correct++
+        //if user selection is incorrect, incorrect ++
+        //if unanswered, unanswered++
+// <!-- 
+//             compare the value of radio button for question i to question i.answer -->
+            var value = $("input[name='answer-choice0']:checked").val(); 
+            if (value === questionData[0].answer) {
+                correct++
+            } else if (value !== questionData[0].answer) {
+                incorrect++
+            } else if (value === undefined) {
+                unanswered++;
+            }
+
+              var value1 = $("input[name='answer-choice1']:checked").val(); 
+            if (value1 === questionData[1].answer) {
+                correct++
+            } else if (value1 !== questionData[1].answer) {
+                incorrect++
+            } else if (value1 === undefined) {
+                unanswered++;
+            }
+
+              var value2 = $("input[name='answer-choice2']:checked").val(); 
+            if (value2 === questionData[2].answer) {
+                correct++
+            } else if (value2 !== questionData[2].answer) {
+                incorrect++
+            } else if (value2 === undefined) {
+                unanswered++;
+            }
+
+              var value3 = $("input[name='answer-choice3']:checked").val(); 
+            if (value3 === questionData[3].answer) {
+                correct++
+            } else if (value3 !== questionData[3].answer) {
+                incorrect++
+            } else if (value3 === undefined) {
+                unanswered++;
+            }
+
+              var value4 = $("input[name='answer-choice4']:checked").val(); 
+            if (value4 === questionData[4].answer) {
+                correct++
+            } else if (value4 !== questionData[4].answer) {
+                incorrect++
+            } else if (value4 === undefined) {
+                unanswered++;
+            }
+
+              var value5 = $("input[name='answer-choice5']:checked").val(); 
+            if (value5 === questionData[5].answer) {
+                correct++
+            } else if (value5 !== questionData[5].answer) {
+                incorrect++
+            } else if (value5 === undefined) {
+                unanswered++;
+            }
+
+                 var value6 = $("input[name='answer-choice6']:checked").val(); 
+            if (value6 === questionData[6].answer) {
+                correct++
+            } else if (value6 !== questionData[6].answer) {
+                incorrect++
+            } else if (value6 === undefined) {
+                unanswered++;
+            }
+
+                 var value7 = $("input[name='answer-choice7']:checked").val(); 
+            if (value7 === questionData[7].answer) {
+                correct++
+            } else if (value7 !== questionData[7].answer) {
+                incorrect++
+            } else if (value7 === undefined) {
+                unanswered++;
+            }
+
+                 var value8 = $("input[name='answer-choice8']:checked").val(); 
+            if (value5 === questionData[8].answer) {
+                correct++
+            } else if (value8 !== questionData[8].answer) {
+                incorrect++
+            } else if (value8 === undefined) {
+                unanswered++;
+            }
+
+                 var value9 = $("input[name='answer-choice9']:checked").val(); 
+            if (value9 === questionData[9].answer) {
+                correct++
+            } else if (value9 !== questionData[9].answer) {
+                incorrect++
+            } else if (value9 === undefined) {
+                unanswered++;
+            }
+
+        }
+
+        
+
+
+        
+    
+
+
+            // if (possibleAnswer[j] = questionData.answer) {
+            //     correct++
+            // }
+    
 
 //possible answers with radio button
-
         function endGame() {
             clearInterval(intervalId);
+            score();
+            $("#question-box").empty();
             $("#result").html("<h2>All Done!</h2>");
             var tally = $("<div>") 
             tally.html("Correct Answers: " + correct + "</br>" + "Incorrect Answers: " + incorrect + "</br>" + "Unanswered: " + unanswered);
             tally.addClass("results");
             $("#result").append(tally);
         }
-
-        function buttonMaker() {
-            var answerButton = $("input: radio");
-
-        }
+//         function buttonMaker() {
+//             var answerButton = $("input: radio");
+//         }
    
-   buttonMaker();
-
+//    buttonMaker();
          // load first question
          // create buttons
          // load following question
@@ -203,13 +297,10 @@
          // results screen
         
          // stop timer
-
-
-
-
-
-
 });
+
+
+
 
     </script>
 
